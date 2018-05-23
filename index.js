@@ -144,59 +144,108 @@ console.log(result)
 }
 function solution11()
 {
-   friends=["pranjul gupta","shivam gupta","gaurav gupta","fake singh"]
-   var sample=new Array();
-   for(var i=0;i<friends.length;i++)
-   {
-       sample[i]=new Object()
-       sample[i].firstName=friends[i].split(" ")[0]
-       sample[i].lastName=friends[i].split(" ")[1]
-   }
+    var friends=[
 
+            {fname:"pranjul",lname:"gupta"},
+            {fname:"raju",lname:"gupta"},
+            {fname:"fake",lname:"singh"},
+            {fname:"deepak",lname:"suman"},
+            {fname:"raju",lname:"kumar"},
+            {fname:"fake",lname:"singh"}
+            ]
 for(var i=0;i<friends.length;i++)
-   {
-       if(sample[i].firstName=="fake")
-       sample.splice(i,1)
-   }
-   console.log(sample)
-   sample.push({firstName:"piyush",lastName:"sharma"},{firstName:"piyush",lastName:"jain"})
-   console.log(sample)
-   function comapre(a,b)
-   {
-       if(a.firstName<b.firstName)
-       return -1
-       if(a.firstName>b.firstName)
-       return 1
-       return 0
-   }
-   sample.sort(comapre)
-   console.log(sample)
-   for(var i=0;i<sample.length;i++)
-   {
-       sample[i].len=sample[i].firstName.length+sample[i].lastName.length
+{
+    friends[i].len=new Array();
+}
+
+    
+    for(i=0;i<friends.length;i++)
+    {
+         console.log(friends[i].fname+" "+friends[i].lname)
     }
-    function comapre1(a,b)
-    { if(a.len<b.len)
-        return -1
-        if(a.len>b.len)
+    console.log(friends.length)
+
+    var c=0
+    for(i=0;i<friends.length;i++)
+    {
+        if(friends[i].fname=="fake")
+        {
+        delete friends[i]
+        friends.splice(i,1);
+        c++
+        }
+    }
+    console.log("after deleting fake id, list is")
+    for(i=0;i<friends.length;i++)
+    {
+         console.log(friends[i])
+    }
+    
+    friends.push({fname:"raju",lname:"sharma"})
+    friends.push({fname:"pappu",lname:"raj"})
+    console.log("after adding two id, list is")
+    for(i=0;i<friends.length;i++)
+    {
+         console.log(friends[i])
+    }
+
+    function compare(a,b)
+    {
+        if(a.fname>b.fname)
         return 1
+        if(a.fname<b.fname)
+        return -1
         return 0
     }
-    sample.sort(comapre1)
-    console.log(sample)
+    friends.sort(compare)
+   
+    console.log("after sorting list is ")
+    for(i=0;i<friends.length;i++)
+    {
+         console.log(friends[i])
+    }
 
-   for(var i=0;i<sample.length;i++)
-   {
-       console.log(sample[i].firstName.charAt(0).toUpperCase()+sample[i].lastName.charAt(0).toUpperCase())
-   }
-   for(var i=0;i<sample.length;i++)
-   {
-       for(var j=i+1;j<sample.length;j++)
-       {
-           if(sample[i].firstName == sample[j].firstName)
-           {
-               console.log(sample[i].firstName)
-           }
-       }
-   }
+
+    for(i=0;i<friends.length;i++)
+    {
+        friends[i].len=friends[i].fname.length+friends[i].lname.length
+    }
+    function compare1(a,b)
+    {
+        if(a.len<b.len)
+        return 1
+        if(a.len>b.len)
+        return -1
+        return 0
+    }
+    console.log(friends)
+    friends.sort(compare1)
+    console.log("after sorting by length,list is ")
+    for(i=0;i<friends.length;i++)
+    {
+         console.log(friends[i])
+    }
+
+
+    for(i=0;i<friends.length;i++)
+    {
+        console.log(friends[i].fname.charAt(0)+friends[i].lname.charAt(0))
+    }
+
+    console.log("list of friends who have same first name")
+    for(i=0;i<friends.length;i++)
+    {
+        for(j=i+1;j<friends.length;j++)
+        {
+            if(friends[i].fname==friends[j].fname)
+            {
+                console.log(friends[i].fname)
+              //  console.log(friends[j].fname+" "+friends[j].lname)
+            }
+        }
+            
+    }
+
+    
+
 }
